@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "http://127.0.0.1:5500",
+        origin: ['https://marschat.netlify.app/', 'http://127.0.0.1:5500'],
         methods: ["GET", "POST"]
     }
 });

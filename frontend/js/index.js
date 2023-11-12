@@ -4,6 +4,7 @@ let msgBox = document.getElementById("msgBox")
 let inputmsg = document.getElementById("inputmsg")
 let userlistcontainer = document.getElementById("userlistcontainer")
 let recipient = ''
+let baseurl = 'https://marschat.onrender.com'
 
 function handlesidebar() {
     if (sidebarEl.classList.contains("sidebarOpen")) {
@@ -28,7 +29,7 @@ function selectRecipient(recp) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = io('http://localhost:3000');
+    const socket = io(baseurl);
 
     // Send a message when the form is submitted
     document.querySelector('form').addEventListener('submit', (e) => {
