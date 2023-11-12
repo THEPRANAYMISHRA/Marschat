@@ -1,5 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+}
 .mainconatinerformessages {
-  height: 92.2vh;
+  height: 100%;
 }
 .mysidebar {
   transition: 1s ease-in-out;
