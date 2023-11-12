@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h2>Login Form</h2>
+
+    <form id="loginForm">
+      <label for="countryCode">Country Code:</label>
+      <select id="countryCode" name="countryCode" required>
+        <!-- You can add more country codes as needed -->
+        <option value="+1">+1 (United States)</option>
+        <option value="+44">+44 (United Kingdom)</option>
+        <option value="+91">+91 (India)</option>
+        <!-- Add more options based on your requirements -->
+      </select>
+      <br />
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" required />
+      <br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+
+      <button type="button" onclick="submitForm()">Login</button>
+    </form>
+  </body>
+</html>

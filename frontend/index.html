@@ -10,18 +10,25 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
   </head>
   <body>
     <!-- navbar starts here -->
     <nav
-      class="navbar bg-dark border-bottom border-body d-flex"
+      class="navbar bg-dark border-bottom border-body"
       data-bs-theme="dark"
       id="navbar"
     >
-      <div class="container-fluid">
-        <button class="btn btn-primary" onclick="handlesidebar()">=</button>
+      <div class="container-fluid d-flex justify-content-start gap-3">
+        <button class="btn btn-danger" onclick="handlesidebar()">
+          <i class="bx bx-menu"></i>
+        </button>
         <a class="navbar-brand" href="#">
           <img
             src="https://cdn-icons-png.flaticon.com/128/2739/2739635.png"
@@ -43,42 +50,11 @@
         id="sidebar"
       >
         <ul class="nav nav-pills flex-column mb-auto" id="userlistcontainer">
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#home"></use>
-              </svg>
-              Home
-            </a>
-          </li> -->
+          <!-- userlist will be visible here -->
         </ul>
-        <hr />
-        <div class="dropdown">
-          <a
-            href="#"
-            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <img
-              src="https://github.com/mdo.png"
-              alt=""
-              width="32"
-              height="32"
-              class="rounded-circle me-2"
-            />
-            <strong>mdo</strong>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
       </div>
       <!-- left side ends here -->
+      <!-- right side starts here -->
       <div class="bg-danger" id="mainBox">
         <section class="msgBox" id="msgBox">
           <!-- messages will be here -->
@@ -87,9 +63,9 @@
           <input type="text" placeholder="Enter message" id="inputmsg" />
           <button
             type="submit"
-            class="d-flex justify-content-center align-items-center"
+            class="d-flex justify-content-center align-items-center btn btn-danger"
           >
-            >
+            <i class="bx bxs-send"></i>
           </button>
         </form>
       </div>
