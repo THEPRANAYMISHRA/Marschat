@@ -17,7 +17,7 @@ const io = socketIo(server, {
 });
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 app.use(cookieParser());
 
 const connectedUsers = {};
