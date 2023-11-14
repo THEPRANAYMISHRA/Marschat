@@ -1,5 +1,5 @@
-// let baseurl = 'https://marschat.onrender.com';
-let baseurl = 'http://localhost:3000';
+let baseurl = 'https://marschat.onrender.com';
+// let baseurl = 'http://localhost:3000';
 const formEl = document.querySelector("form");
 const myalert = document.getElementsByClassName("alert")[0];
 

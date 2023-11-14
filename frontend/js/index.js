@@ -5,8 +5,8 @@ let showusername = document.getElementById("showusername");
 let inputmsg = document.getElementById("inputmsg")
 let userlistcontainer = document.getElementById("userlistcontainer")
 let recipient = ''
-// let baseurl = 'https://marschat.onrender.com'
-let baseurl = 'http://localhost:3000';
+let baseurl = 'https://marschat.onrender.com'
+// let baseurl = 'http://localhost:3000';
 
 let isTokenPresent = document.cookie.split("=")[1];
 
