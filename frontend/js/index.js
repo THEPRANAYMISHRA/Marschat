@@ -1,6 +1,7 @@
 let sidebarEl = document.getElementById("sidebar")
 let mainBox = document.getElementById("mainBox")
 let msgBox = document.getElementById("msgBox")
+let showusername = document.getElementById("showusername");
 let inputmsg = document.getElementById("inputmsg")
 let userlistcontainer = document.getElementById("userlistcontainer")
 let recipient = ''
@@ -8,6 +9,8 @@ let recipient = ''
 let baseurl = 'http://localhost:3000';
 
 let isTokenPresent = document.cookie.split("=")[1];
+
+console.log(isTokenPresent);
 
 if (isTokenPresent) {
     fetch(`${baseurl}/user/verify`, {
@@ -18,9 +21,11 @@ if (isTokenPresent) {
     }).then((res) => {
         return res.json()
     }).then((data) => {
-        console.log(data)
+        showusername.innerText = data.name;
     }).catch((err) => {
-        console.log(err)
+        console.log(err);
+        alert("something went wrong..");
+        return;
     });
 } else {
     window.location.href = "../pages/login.html";

@@ -1,6 +1,7 @@
 // let baseurl = 'https://marschat.onrender.com';
 let baseurl = 'http://localhost:3000';
-const formEl = document.querySelector("form")
+const formEl = document.querySelector("form");
+const myalert = document.getElementsByClassName("alert")[0];
 
 
 formEl.addEventListener("submit", (e) => {
@@ -24,8 +25,16 @@ formEl.addEventListener("submit", (e) => {
             return res.json();
         })
         .then((data) => {
-            console.log(data)
+            myalert.style.display = "block";
+            myalert.innerText = "Registration successful!";
+            setTimeout(() => {
+                window.location.href = "../pages/login.html";
+            }, 1000);
         }).catch((err) => {
             console.log(err)
+            myalert.style.display = "block";
+            myalert.classList.remove("alert-primary");
+            myalert.classList.add("alert-danger");
+            myalert.innerText = "Registration failed!";
         })
 })
