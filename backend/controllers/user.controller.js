@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
             bcrypt.compare(password, isUserPresnt.password, function (err, result) {
                 if (result) {
                     const token = jwt.sign({ name: isUserPresnt.name }, process.env.JWT_TOKEN, { expiresIn: '24h' });
-                    return res.status(200).send({ token: token });
+                    return res.status(200).send({ token: token, name: isUserPresnt.name });
                 } else {
                     return res.status(403).send({ message: 'Invalid Credentials' });
                 }
@@ -59,9 +59,7 @@ const loginUser = async (req, res) => {
 }
 
 const verifyUser = (req, res) => {
-    const myToken = req.cookies.myToken;
-    console.log('Token:', myToken);
-    res.send({ message: 'Hello User!' });
+    res.send({ name: req.body.name });
 }
 
 
