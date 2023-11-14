@@ -25,3 +25,12 @@ form {
   width: 100%;
   display: none;
 }
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 15px !important;
+  }
+  form {
+    width: 80%;
+  }
+}
