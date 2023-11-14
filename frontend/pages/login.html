@@ -7,27 +7,12 @@
   </head>
   <body>
     <h2>Login Form</h2>
-
-    <form id="loginForm">
-      <label for="countryCode">Country Code:</label>
-      <select id="countryCode" name="countryCode" required>
-        <!-- You can add more country codes as needed -->
-        <option value="+1">+1 (United States)</option>
-        <option value="+44">+44 (United Kingdom)</option>
-        <option value="+91">+91 (India)</option>
-        <!-- Add more options based on your requirements -->
-      </select>
-      <br />
-
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" name="phoneNumber" required />
-      <br />
-
-      <label for="password">Password:</label>
+    <p id="alert"></p>
+    <form onsubmit="submitForm()">
+      <input type="email" id="email" name="phoneNumber" required />
       <input type="password" id="password" name="password" required />
-      <br />
-
-      <button type="button" onclick="submitForm()">Login</button>
+      <button type="submit">Login</button>
     </form>
   </body>
+  <script src="../js/login.js"></script>
 </html>

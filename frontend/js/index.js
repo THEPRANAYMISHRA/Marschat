@@ -4,26 +4,55 @@ let msgBox = document.getElementById("msgBox")
 let inputmsg = document.getElementById("inputmsg")
 let userlistcontainer = document.getElementById("userlistcontainer")
 let recipient = ''
-let baseurl = 'https://marschat.onrender.com'
+// let baseurl = 'https://marschat.onrender.com'
+let baseurl = 'http://localhost:3000';
+
+let isTokenPresent = document.cookie.split("=")[1];
+
+if (isTokenPresent) {
+    fetch(`${baseurl}/user/verify`, {
+        method: "GET",
+        headers: {
+            Authorization: isTokenPresent,
+        },
+    }).then((res) => {
+        return res.json()
+    }).then((data) => {
+        console.log(data)
+    }).catch((err) => {
+        console.log(err)
+    });
+} else {
+    window.location.href = "../pages/login.html";
+}
 
 function handlesidebar() {
-    if (sidebarEl.classList.contains("sidebarOpen")) {
-        sidebarEl.classList.remove("sidebarOpen")
+    if (sidebarEl.classList.contains("sidebarClosed")) {
+        sidebarEl.classList.remove("sidebarClosed");
+        for (let child of sidebarEl.children) {
+            child.style.display = 'block'; // Change 'block' to 'initial' if needed
+        }
     } else {
-        sidebarEl.classList.add("sidebarOpen")
+        sidebarEl.classList.add("sidebarClosed");
+        for (let child of sidebarEl.children) {
+            child.style.display = 'none';
+        }
     }
 }
 
+
 function selectRecipient(recp) {
     recipient = recp;
-    const allLiElements = document.querySelectorAll('.users');
-    allLiElements.forEach((li) => {
-        li.classList.remove('btn-primary');
+    const allbuttonElements = document.querySelectorAll('.users');
+    allbuttonElements.forEach((button) => {
+        button.classList.remove('btn-danger');
     });
 
     // Add btn-primary class to the clicked li element
     const clickedLiElement = document.querySelector(`.users[data-id="${recp}"]`);
-    clickedLiElement.classList.add('btn-primary');
+    console.log(clickedLiElement)
+    clickedLiElement.classList.remove('btn-light');
+    clickedLiElement.classList.add('btn-danger');
     msgBox.innerHTML = '';
 }
 
@@ -36,8 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const message = inputmsg.value;
         if (message !== "" && recipient != '') {
-            let htmlstr = `<div class="sentmsg">${message}</div>`;
-            msgBox.innerHTML += htmlstr;
+            var div = document.createElement('div');
+            div.textContent = message;
+            div.classList.add('sentmsg');
+            msgBox.append(div);
+
             const payload = {
                 sender: socket.id,
                 recipient: recipient,
@@ -53,18 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Receive and display messages
     socket.on('message', (payload) => {
         let { message } = payload;
-        let htmlstr = `<div class="receivedmsg">${message}</div>`
-        msgBox.innerHTML += htmlstr
+        var div = document.createElement('div');
+        div.textContent = message;
+        div.classList.add('receivedmsg');
+        msgBox.append(div);
     });
 
     socket.on("userList", (list) => {
         let htmlStr = list.map((ele) => {
             if (ele !== socket.id) {
-                return `<li class="nav-item btn my-1 users" data-id="${ele}" onclick="selectRecipient('${ele}')">
-                            <a href="#" class="nav-link text-white">
-                            ${ele}
-                            </a>
-                        </li>`
+                return `<button class="btn btn-light my-1 users" data-id="${ele}" onclick="selectRecipient('${ele}')">
+                ${ele}
+                        </button>`
             }
         }).join("");
 
