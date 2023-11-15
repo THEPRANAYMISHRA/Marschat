@@ -1,12 +1,13 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const http = require('http');
+const fs = require('fs')
 const cors = require('cors')
 require("dotenv").config();
 const socketIo = require('socket.io');
 const { connection } = require('./db');
 const { userRouter } = require('./routes/user.routes');
-// const { chatController } = require('./controllers/chat.controller');
+const { socketMiddleware } = require('./middleware/auth.socket');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -16,28 +17,20 @@ const io = socketIo(server, {
     }
 });
 
-var whitelist = ['https://marschat.netlify.app', 'http://localhost:5500']
-var corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: "*"
+}));
 app.use(cookieParser());
 
 const connectedUsers = {};
 
+io.use(socketMiddleware);
 
 io.on('connection', (socket) => {
-    console.log(`User connected with ID: ${socket.id}`);
+    console.log(`User connected : ${socket.user}`);
 
-    connectedUsers[socket.id] = socket.id;
+    connectedUsers[socket.id] = { name: socket.user, id: socket.id };
 
     io.emit("userList", Object.values(connectedUsers))
 
@@ -51,6 +44,11 @@ io.on('connection', (socket) => {
         io.to(recipient).emit('message', { sender, message });
     });
 
+    socket.on('image', ({ recipient, imageData }) => {
+        // const base64Data = imageData.replace(/^data:image\/png;base64,/, '');
+        // fs.writeFileSync('uploaded_image.png', base64Data, 'base64');
+        io.to(recipient).emit('image', { imageData });
+    });
 });
 
 app.use("/user", userRouter);
