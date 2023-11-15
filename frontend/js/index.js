@@ -10,8 +10,8 @@ let uploadImage = document.getElementById("uploadImage");
 let sendImageBtn = document.getElementById("sendImageBtn");
 let recipient = '';
 let imageData = '';
-// let baseurl = 'https://marschat.onrender.com'
-let baseurl = 'http://localhost:3000';
+let baseurl = 'https://marschat.onrender.com'
+// let baseurl = 'http://localhost:3000';
 
 let isTokenPresent = localStorage.getItem("marschattoken");
 
