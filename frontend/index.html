@@ -42,6 +42,12 @@
       </div>
     </nav>
     <!-- navbar ends here -->
+    <section id="uploadedImageDisplay">
+      <img src="" id="uploadPreview" alt="upload image" />
+      <button class="btn btn-danger btn-sm" id="sendImageBtn">
+        Send Image
+      </button>
+    </section>
 
     <main class="d-flex mainconatinerformessages">
       <!-- left side starts here -->
@@ -64,6 +70,8 @@
         </section>
         <form>
           <input type="text" placeholder="Enter message" id="inputmsg" />
+          <label for="uploadImage"><i class="bx bxs-photo-album"></i></label>
+          <input type="file" id="uploadImage" />
           <button
             type="submit"
             class="d-flex justify-content-center align-items-center btn btn-danger"

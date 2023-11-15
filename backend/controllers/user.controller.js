@@ -58,9 +58,5 @@ const loginUser = async (req, res) => {
     }
 }
 
-const verifyUser = (req, res) => {
-    res.send({ name: req.body.name });
-}
 
-
-module.exports = { registerUser, loginUser, verifyUser };
+module.exports = { registerUser, loginUser };

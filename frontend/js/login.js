@@ -20,8 +20,7 @@ formEl.addEventListener("submit", (e) => {
     }).then((res) => {
         return res.json();
     }).then((data) => {
-        setCookie(data.token);
-        console.log(data)
+        localStorage.setItem("marschattoken", data.token);
         myalert.style.display = "block";
         myalert.innerText = "Login successful!";
         setTimeout(() => {
@@ -35,9 +34,9 @@ formEl.addEventListener("submit", (e) => {
     })
 })
 
-function setCookie(value) {
-    var currentDate = new Date();
-    var expiryDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
-    var expiryDateString = expiryDate.toUTCString();
-    document.cookie = `token=${value}; expires=${expiryDateString}; path=/`;
-}
+// function setCookie(value) {
+//     var currentDate = new Date();
+//     var expiryDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
+//     var expiryDateString = expiryDate.toUTCString();
+//     document.cookie = `token=${value}; expires=${expiryDateString}; path=/`;
+// }
