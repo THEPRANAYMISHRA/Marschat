@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   height: 100vh;
   overflow: hidden;
@@ -71,7 +74,7 @@ nav {
 
 .msgBox {
   height: 100%;
-  background-color: rgb(155, 0, 0);
+  background-color: rgb(169, 169, 169);
   background-image: url("https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/pattern-28.svg");
   background-position: center;
   display: flex;
@@ -80,9 +83,9 @@ nav {
   padding: 1rem 1rem 10rem 1rem;
   overflow-y: scroll;
 }
-.msgBox::-webkit-scrollbar {
+/* .msgBox::-webkit-scrollbar {
   width: 10px;
-}
+} */
 
 #mainBox form {
   background-color: #333333b6 !important;
@@ -164,30 +167,36 @@ label {
 }
 
 .receivedmsg {
-  background-color: #0088cc;
+  background-color: #ffffff;
   color: black;
   margin-right: auto;
   padding: 1rem;
   border-radius: 0 2rem 2rem 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .sentmsg {
-  background-color: #0088cc;
+  background-color: #ffffff;
   color: black;
   margin-left: auto;
   padding: 1rem;
   border-radius: 2rem 0 2rem 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .receivedmsg img {
-  max-width: 250px;
+  width: 250px;
   overflow: hidden;
   height: 250px;
+  border-radius: 0.5rem;
 }
 .sentmsg img {
-  max-width: 250px;
+  width: 250px;
   overflow: hidden;
   height: 250px;
+  border-radius: 0.5rem;
 }
 
 @media screen and (max-width: 1000px) {
