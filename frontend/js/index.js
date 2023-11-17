@@ -8,6 +8,7 @@ let uploadedImageDisplay = document.getElementById("uploadedImageDisplay");
 let uploadPreview = document.getElementById('uploadPreview');
 let uploadImage = document.getElementById("uploadImage");
 let sendImageBtn = document.getElementById("sendImageBtn");
+let navbarbrand = document.getElementsByClassName("navbar-brand")[0];
 let recipient = '';
 let imageData = '';
 let baseurl = 'https://marschat.onrender.com'
@@ -34,18 +35,20 @@ function handlesidebar() {
 }
 
 
-function selectRecipient(recp) {
+function selectRecipient(recp, name) {
     recipient = recp;
     const allbuttonElements = document.querySelectorAll('.users');
     allbuttonElements.forEach((button) => {
         button.classList.remove('btn-danger');
     });
 
+    navbarbrand.textContent = name;
+
     // Add btn-primary class to the clicked li element
     const clickedLiElement = document.querySelector(`.users[data-id="${recp}"]`);
-    console.log(clickedLiElement)
     clickedLiElement.classList.remove('btn-light');
     clickedLiElement.classList.add('btn-danger');
+    handlesidebar()
     msgBox.innerHTML = '';
 }
 
@@ -104,8 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on("userList", (list) => {
         let htmlStr = list.map((ele) => {
             if (ele.id !== socket.id) {
-                return `<button class="btn btn-light my-1 users" data-id="${ele.id}" onclick="selectRecipient('${ele.id}')">
-                ${ele.name}
+                return `<button class="btn btn-light my-1 users" data-id="${ele.id}" onclick="selectRecipient('${ele.id}','${ele.name}')">
+                <i class='bx bxs-user-circle' ></i>
+                <span>${ele.name}</span>
                         </button>`
             } else {
                 showusername.innerText = ele.name;
