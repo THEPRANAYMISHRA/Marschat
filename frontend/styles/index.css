@@ -12,11 +12,11 @@ nav {
   width: 100%;
   position: sticky;
   top: 0;
-  background-color: #5448c8 !important;
+  background-color: #333333 !important;
   z-index: 3;
 }
 .mainconatinerformessages {
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 .mysidebar {
@@ -24,7 +24,7 @@ nav {
   width: 280px;
   height: 100%;
   z-index: 2;
-  background-color: #352d7e !important;
+  background-color: #333333 !important;
   position: absolute;
   bottom: 0;
   padding-top: 5rem !important;
@@ -35,23 +35,29 @@ nav {
 }
 
 #userlistcontainer {
-  height: 80%;
+  height: 100%;
   overflow-y: scroll !important;
   overflow-x: hidden !important;
-  background-color: #5448c8;
+  background-color: #333333;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem 1rem;
-  border-radius: 1rem;
 }
 
 .users {
-  min-width: 200px;
-  max-width: 200px;
+  width: 100%;
   overflow: hidden;
   min-height: 50px;
   max-height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.users i {
+  font-size: 2.5rem;
 }
 
 #userlistcontainer::-webkit-scrollbar {
@@ -65,7 +71,9 @@ nav {
 
 .msgBox {
   height: 100%;
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(155, 0, 0);
+  background-image: url("https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/pattern-28.svg");
+  background-position: center;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -77,7 +85,7 @@ nav {
 }
 
 #mainBox form {
-  background-color: #5448c8 !important;
+  background-color: #333333b6 !important;
   padding: 0.5rem;
   display: flex;
   gap: 1rem;
@@ -156,26 +164,30 @@ label {
 }
 
 .receivedmsg {
-  background-color: aliceblue;
+  background-color: #0088cc;
   color: black;
-  margin-right: 50%;
+  margin-right: auto;
   padding: 1rem;
   border-radius: 0 2rem 2rem 2rem;
 }
 
 .sentmsg {
-  background-color: aliceblue;
+  background-color: #0088cc;
   color: black;
-  margin-left: 50%;
+  margin-left: auto;
   padding: 1rem;
   border-radius: 2rem 0 2rem 2rem;
 }
 
 .receivedmsg img {
   max-width: 250px;
+  overflow: hidden;
+  height: 250px;
 }
 .sentmsg img {
   max-width: 250px;
+  overflow: hidden;
+  height: 250px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -186,8 +198,23 @@ label {
 }
 
 @media screen and (max-width: 500px) {
+  .msgBox {
+    background-image: url("https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/pattern-27.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow();
+  }
   #uploadedImageDisplay {
     width: 200px;
     height: 200px;
+  }
+  .mysidebar {
+    width: 100% !important;
+  }
+
+  .sidebarClosed {
+    width: 0% !important;
+    padding: 0 !important;
   }
 }
